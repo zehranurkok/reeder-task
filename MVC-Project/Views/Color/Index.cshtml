@@ -1,0 +1,65 @@
+﻿@using MVC_Project.Models.Entity
+@model List<TblColor>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Task for reeder</title>
+    <link href="~/web/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div>
+        @{
+            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var data = serializer.Serialize(ViewBag.numbers);
+        }
+        <p id="data">@data</p>
+        <button class="whiteTheme" id="theme">Change Color</button>
+        <script>
+            var theme = document.getElementById("theme");
+
+            var data = document.getElementById("data");
+            var colorsTextData = data.textContent;
+            var colors = JSON.parse(colorsTextData)
+            console.log(colors);
+
+            theme.addEventListener("click", function () {
+                var randomNumber = generateRandomNumber(0, 3);
+                var pickedColor = pickRandomColor(randomNumber);
+                //console.log(pickedColor);
+                switch (pickedColor) {
+                    case "kırmızı":
+                        document.body.className = "bg-red";
+                        break;
+                    case "mavi":
+                        document.body.className = "bg-blue";
+                        break;
+                    case "yeşil":
+                        document.body.className = "bg-green";
+                        break;
+                    default:
+                        console.log(pickedColor);
+                        document.body.className = "bg-default";
+                        break;
+                }
+            })
+
+            function generateRandomNumber(min, max) {
+                return min + Math.floor(Math.random() * max);
+            }
+
+            function pickRandomColor(randomNumber) {
+                return colors[randomNumber].COLOR;
+            }
+        </script>
+    </div>
+    <script src="~/web/script.js"></script>
+
+</body>
+</html>

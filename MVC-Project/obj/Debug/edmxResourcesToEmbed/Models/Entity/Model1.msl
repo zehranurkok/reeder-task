@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MvsColorChangeModelStoreContainer" CdmEntityContainer="MvsColorChangeEntities">
+    <EntitySetMapping Name="TblColors">
+      <EntityTypeMapping TypeName="MvsColorChangeModel.TblColor">
+        <MappingFragment StoreEntitySet="TblColors">
+          <ScalarProperty Name="COLORID" ColumnName="COLORID" />
+          <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
